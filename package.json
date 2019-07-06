@@ -1,0 +1,41 @@
+{
+  "name": "api-starter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@gitlab.com:ncdai3651408/api-starter.git",
+  "author": "Dai Nguyen <ncdai3651408@icloud.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon index --exec babel-node --",
+    "start": "NODE_ENV=production babel-node index",
+    "docker:build": "docker-compose build",
+    "docker:restart": "docker-compose restart api",
+    "docker:up": "docker-compose up -d ; yarn docker:restart",
+    "docker:logs": "docker-compose logs -f --tail=50 api",
+    "docker:after-add-package": "yarn docker:build api; yarn docker:up"
+  },
+  "dependencies": {
+    "@hapi/boom": "^7.4.2",
+    "@hapi/joi": "^15.1.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "babel-preset-es2015": "^6.24.1",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "express-boom": "^3.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.6.3",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "standard": {
+    "global": [
+      "localStorage"
+    ]
+  }
+}
